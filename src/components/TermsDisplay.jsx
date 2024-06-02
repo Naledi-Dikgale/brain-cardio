@@ -35,16 +35,17 @@ const TermsDisplay = ({ count }) => {
     );
   };
 
-  return (
-    <div className="text-xl space-y-2">
-      {randomTerms.map((term, index) => (
-        <div key={index} style={{ textDecoration: checkedItems.includes(term) ? 'line-through' : 'none' }}>
-          <input type="checkbox" onChange={() => handleCheck(term)} />
-          {term}
-        </div>
-      ))}
-    </div>
-  );
+ return (
+  <div className="text-xl space-y-2" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <div>Timer: {timer}</div>
+    {randomTerms.map((term, index) => (
+      <div key={index} style={{ textDecoration: checkedItems.includes(term) ? 'line-through' : 'none' }}>
+        <input type="checkbox" onChange={() => handleCheck(term)} />
+        {term}
+      </div>
+    ))}
+  </div>
+);
 };
 
 export default TermsDisplay;
