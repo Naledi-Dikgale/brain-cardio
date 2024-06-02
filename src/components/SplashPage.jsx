@@ -11,12 +11,16 @@ const SplashPage = ({ onStart }) => {
   };
 
   const handleBack = () => {
-    navigate(-1);
-  };
-
+  setShowRules(false);
+};
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-indigo-300  via-purple-400 to-violet-600 text-white">
+      {showRules && (
+        <button onClick={handleBack} className="absolute top-0 left-0 m-4">
+          <IoArrowBack size={30} />
+        </button>
+      )}
       <div className="text-4xl font-nosi mb-4">Tech-30</div>
       <div className="relative">
         <div className="p-12 w-40 h-40 bg-cover bg-center rounded-full" style={{ backgroundImage: `url(/logo.png)` }}>
