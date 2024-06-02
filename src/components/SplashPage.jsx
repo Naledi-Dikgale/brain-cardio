@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { IoArrowBack } from 'react-icons/io5';
 
 const SplashPage = ({ onStart }) => {
   const [showRules, setShowRules] = useState(false);
+  const navigate = useNavigate();
 
   const handleShowRules = () => {
     setShowRules(true);
   };
+
+  const handleBack = () => {
+    navigate(-1);
+  };
+
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-indigo-300  via-purple-400 to-violet-600 text-white">
