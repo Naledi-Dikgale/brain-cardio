@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoArrowBack } from 'react-icons/io5';
 
-const SplashPage = ({ onStart }) => {
+const SplashPage = () => {
   const [showRules, setShowRules] = useState(false);
+  
   const navigate = useNavigate();
+  const onStart = () => {
+    navigate('/game');
+  };
 
   const handleShowRules = () => {
     setShowRules(true);
