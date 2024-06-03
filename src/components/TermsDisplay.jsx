@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { IoArrowBack } from 'react-icons/io5';
+import { useNavigate } from 'react-router-dom';
 
 const terms = [
   'HTML', 'CSS', 'Tailwind', 'React', 'JavaScript', 
@@ -14,6 +16,7 @@ const TermsDisplay = ({ count }) => {
   const [checkedItems, setCheckedItems] = useState([]);
   const [timer, setTimer] = useState(30);
   const [randomTerms, setRandomTerms] = useState(() => getRandomTerms(count));
+  const navigate = useNavigate();
 
   useEffect(() => {
     let interval = null;
@@ -46,6 +49,9 @@ const TermsDisplay = ({ count }) => {
 
   return (
     <div className="text-xl space-y-2" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <div style={{ position: 'absolute', top: 0, left: 0 }}>
+        <IoArrowBack onClick={() => navigate(-1)} />
+      </div>
       <div>Timer: {timer}</div>
       {randomTerms.map((term, index) => (
         <div key={index} style={{ textDecoration: checkedItems.includes(term) ? 'line-through' : 'none' }}>
