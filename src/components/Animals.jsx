@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { IoArrowBack } from 'react-icons/io5';
+import { ImArrowLeft } from 'react-icons/im';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Modal from 'react-modal';
+import { motion } from 'framer-motion';
 
 Modal.setAppElement('#root');
 
 const terms = [
   'Dog', 'Cat', 'Elephant', 'Lion', 'Tiger', 
-  'Bear', 'Giraffe', 'Zebra', 'Monkey', 'Kangaroo'
+  'Bear', 'Giraffe', 'Zebra', 'Monkey', 'Kangaroo',
+  'Rabbit', 'Panda', 'Wolf', 'Fox', 'Deer', 
+  'Horse', 'Sheep', 'Cow', 'Goat', 'Pig',
+  'Hippopotamus', 'Rhinoceros', 'Leopard', 'Cheetah', 'Gorilla',
+  'Chimpanzee', 'Orangutan', 'Koala', 'Penguin', 'Ostrich',
+  'Eagle', 'Hawk', 'Parrot', 'Owl', 'Falcon', 
+  'Dolphin', 'Whale', 'Shark', 'Octopus', 'Turtle'
 ];
+
 
 const getRandomTerms = (num) => {
   const shuffled = terms.sort(() => 0.5 - Math.random());
@@ -57,21 +65,23 @@ const Animals = ({ count }) => {
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
-        style={{
-          overlay: {
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          },
-          content: {
-            color: 'lightsteelblue',
-          },
-        }}
+        className="flex items-center justify-center min-h-screen px-4 py-6 text-center text-white bg-gradient-to-r from-indigo-300  via-purple-400 to-violet-600 overlay:bg-black overlay:opacity-75"
       >
-        <h2>Time's up!</h2>
-        <p>You checked {checkedItems.length} items.</p>
-        <button onClick={() => setModalIsOpen(false)}>Close</button>
+        <div className="p-6 bg-red-500 rounded shadow-lg">
+          <h2 className="mb-4 text-3xl font-ice font-bold">Time's up!</h2>
+          <p className="mb-4">You checked {checkedItems.length} items.</p>
+          <button 
+            onClick={() => setModalIsOpen(false)}
+            className="px-4 py-2 text-red-500 bg-white rounded hover:bg-gray-200"
+          >
+            Close
+          </button>
+        </div>
       </Modal>
-      <div className="absolute top-2 left-2">
-        <IoArrowBack onClick={() => navigate(-1)} />
+      <div className="absolute top-2 left-2"
+      style={{color: 'blue'}}
+      >
+        <ImArrowLeft onClick={() => navigate(-1)} />
       </div>
       <div className="bg-lime-300 bg-opacity-50 text-blue-600 rounded px-12 py-4 text-2xl font-bold" style={{ textShadow: '-1px 0 lime, 0 1px lime, 1px 0 lime, 0 -1px lime'}}>
         Timer: {timer}
@@ -82,9 +92,13 @@ const Animals = ({ count }) => {
           {term}
         </div>
       ))}
-      <button onClick={handleNext} className="bg-white text-blue-500 px-6 py-3 rounded-full text-xl font-bold">
+      <motion.button onClick={handleNext} className="bg-white text-blue-500 px-6 py-3 rounded-full text-xl font-bold"
+      whileHover={{ scale: 1.1, boxShadow: "0px 0px 8px rgb(255, 182, 193)" }}
+      whileTap={{ scale: 0.9 }}
+      transition={{ type: "spring", stiffness: 300 }}
+      >
         Next
-      </button>
+      </motion.button>
     </div>
   );
 };
