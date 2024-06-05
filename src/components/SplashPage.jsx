@@ -7,7 +7,7 @@ const SplashPage = () => {
   
   const navigate = useNavigate();
   const onStart = () => {
-    navigate('/game');
+    navigate('/categories');
   };
 
   const handleShowRules = () => {
