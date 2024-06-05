@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IoArrowBack } from 'react-icons/io5';
+import { ImArrowLeft } from "react-icons/im";
+import { motion } from 'framer-motion';
 
 const SplashPage = () => {
   const [showRules, setShowRules] = useState(false);
@@ -22,7 +23,7 @@ const SplashPage = () => {
     <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-indigo-300  via-purple-400 to-violet-600 text-white">
       {showRules && (
         <button onClick={handleBack} className="absolute top-0 left-0 m-4">
-          <IoArrowBack size={30} />
+          <ImArrowLeft size={30} />
         </button>
       )}
       <div className="text-4xl font-nosi mb-4">Tech-30</div>
@@ -38,9 +39,13 @@ const SplashPage = () => {
       )}
       {!showRules ? (
         <div className="mt-6">
-          <button onClick={handleShowRules} className="bg-white text-blue-500 px-6 py-3 rounded-full text-xl font-bold">
+          <motion.button onClick={handleShowRules} className="bg-white text-blue-500 px-6 py-3 rounded-full text-xl font-bold"
+          whileHover={{ scale: 1.1, boxShadow: "0px 0px 8px rgb(255, 182, 193)" }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: "spring", stiffness: 300 }}
+          >
             Start
-          </button>
+          </motion.button>
         </div>
       ) : (
         <div className="text-center">
@@ -53,9 +58,13 @@ const SplashPage = () => {
             <p>5. The team with the most points wins!</p>
             <p>6. Click "Next" when you are ready to play.</p>
           </div>
-          <button onClick={onStart} className="bg-white text-blue-500 px-6 py-3 rounded-full text-xl font-bold">
+          <motion.button onClick={onStart} className="bg-white text-blue-500 px-6 py-3 rounded-full text-xl font-bold"
+          whileHover={{ scale: 1.1, boxShadow: "0px 0px 8px rgb(255, 182, 193)" }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: "spring", stiffness: 300 }}
+          >
             Next
-          </button>
+          </motion.button>
         </div>
       )}
     </div>
