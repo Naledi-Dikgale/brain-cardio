@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ImArrowLeft } from 'react-icons/im';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import { motion } from 'framer-motion';
 import CustomModal from './Modal';
@@ -15,9 +15,8 @@ const terms = [
   'Hippopotamus', 'Rhinoceros', 'Leopard', 'Cheetah', 'Gorilla',
   'Chimpanzee', 'Orangutan', 'Koala', 'Penguin', 'Ostrich',
   'Eagle', 'Hawk', 'Parrot', 'Owl', 'Falcon', 
-  'Dolphin', 'Whale', 'Shark', 'Octopus', 'Turtle', 'viper'
+  'Dolphin', 'Whale', 'Shark', 'Octopus', 'Turtle', 'Viper'
 ];
-
 
 const getRandomTerms = (num) => {
   const shuffled = terms.sort(() => 0.5 - Math.random());
@@ -30,7 +29,6 @@ const Animals = ({ count }) => {
   const [randomTerms, setRandomTerms] = useState(() => getRandomTerms(count));
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
     let interval = null;
@@ -59,29 +57,28 @@ const Animals = ({ count }) => {
   const handleNext = () => {
     setTimer(30);
     setRandomTerms(getRandomTerms(count));
+    setCheckedItems([]);
   };
 
   return (
     <div className="text-xl space-y-2 flex flex-col justify-center items-center h-screen bg-gradient-to-r from-indigo-300  via-purple-400 to-violet-600 ">
       <CustomModal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} checkedItems={checkedItems} />
-      <div className="absolute top-2 left-2"
-      style={{color: 'blue'}}
-      >
+      <div className="absolute top-2 left-2" style={{ color: 'blue' }}>
         <ImArrowLeft onClick={() => navigate(-1)} />
       </div>
-      <div className="bg-lime-300 bg-opacity-50 text-blue-600 rounded px-12 py-4 text-2xl font-bold" style={{ textShadow: '-1px 0 lime, 0 1px lime, 1px 0 lime, 0 -1px lime'}}>
+      <div className="bg-lime-300 bg-opacity-50 text-blue-600 rounded px-12 py-4 text-2xl font-bold" style={{ textShadow: '-1px 0 lime, 0 1px lime, 1px 0 lime, 0 -1px lime' }}>
         Timer: {timer}
       </div>
       {randomTerms.map((term, index) => (
         <div key={index} style={{ textDecoration: checkedItems.includes(term) ? 'line-through' : 'none' }}>
-          <input type="checkbox" onChange={() => handleCheck(term)} />
+          <input type="checkbox" onChange={() => handleCheck(term)} checked={checkedItems.includes(term)} />
           {term}
         </div>
       ))}
       <motion.button onClick={handleNext} className="bg-white text-blue-500 px-6 py-3 rounded-full text-xl font-bold"
-      whileHover={{ scale: 1.1, boxShadow: "0px 0px 8px rgb(255, 182, 193)" }}
-      whileTap={{ scale: 0.9 }}
-      transition={{ type: "spring", stiffness: 300 }}
+        whileHover={{ scale: 1.1, boxShadow: "0px 0px 8px rgb(255, 182, 193)" }}
+        whileTap={{ scale: 0.9 }}
+        transition={{ type: "spring", stiffness: 300 }}
       >
         Next
       </motion.button>
