@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { IoArrowBack } from 'react-icons/io5';
+import { ImArrowLeft } from 'react-icons/im';
 import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import { motion } from 'framer-motion';
@@ -65,7 +65,7 @@ const Entertainment = ({ count }) => {
     <div className="text-xl space-y-2 flex flex-col justify-center items-center h-screen bg-gradient-to-r from-indigo-300 via-purple-400 to-violet-600">
       <CustomModal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} checkedItems={checkedItems} />
       <div className="absolute top-2 left-2" style={{ color: 'blue' }}>
-        <IoArrowBack onClick={() => navigate(-1)} />
+        <ImArrowLeft onClick={() => navigate(-1)} />
       </div>
       <div className="bg-lime-300 bg-opacity-50 text-blue-600 rounded px-12 py-4 text-2xl font-bold" style={{ textShadow: '-1px 0 lime, 0 1px lime, 1px 0 lime, 0 -1px lime' }}>
         Timer: {timer}
