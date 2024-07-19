@@ -61,7 +61,7 @@ const Categories = () => {
         >
           Entertainment
         </motion.li>
-        <motion.li onClick={() => navigate("/category/other")} className="bg-white text-blue-500 px-6 py-3 rounded-full text-xl font-bold"
+        <motion.li onClick={() => navigate("/category/other")} className="bg-white text-blue-500 px-6 py-3 rounded-full text-xl font-bold m-4"
         whileHover={{ scale: 1.1, boxShadow: "0px 0px 8px rgb(255, 182, 193)" }}
         whileTap={{ scale: 0.9 }}
         transition={{ type: "spring", stiffness: 300 }}>
